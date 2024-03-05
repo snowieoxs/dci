@@ -56,3 +56,7 @@ def redis():
         Redis: A Redis client.
     """
     return Redis.from_url(os.getenv("REDIS_URL", "redis://localhost:6379"))
+
+# never ever do this
+# if __name__ == "__main__":
+#    app.run(host="0.0.0.0", port=5000, debug=True)
