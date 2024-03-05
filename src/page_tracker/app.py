@@ -1,17 +1,20 @@
 # src/page_tracker/app.py
 
 """
-This module defines a simple Flask application that uses Redis to track the number of page views.
+This module defines a simple Flask application that uses Redis to track the
+number of page views.
 
-The application defines a single route ("/") that increments a counter in Redis,
-each time it's accessed and returns a message indicating how many times the page has been viewed.
+The application defines a single route ("/") that increments a counter in
+Redis each time it's accessed and returns a message indicating how many times
+the page has been viewed.
 
-The Redis client used by the application is created using the URL specified in the REDIS_URL
-environment variable, or "redis://localhost:6379" if REDIS_URL is not set. The client is cached,
-so subsequent calls to the `redis` function will return the same client instance.
+The Redis client used by the application is created using the URL specified in
+the REDIS_URL environment variable, or "redis://localhost:6379" if REDIS_URL
+is not set. The client is cached, so subsequent calls to the `redis` function
+will return the same client instance.
 
-This module also handles Redis errors by logging the error,
-and returning an error message to the client.
+This module also handles Redis errors by logging the error and returning an
+error message to the client.
 """
 
 import os
@@ -56,6 +59,7 @@ def redis():
         Redis: A Redis client.
     """
     return Redis.from_url(os.getenv("REDIS_URL", "redis://localhost:6379"))
+
 
 # never ever do this
 # if __name__ == "__main__":
