@@ -6,10 +6,6 @@ import pytest
 
 from page_tracker.app import app
 
-@pytest.fixture
-def http_client():
-    return app.test_client()
-
 @unittest.mock.patch("page_tracker.app.redis")
 def test_should_call_redis_incr(mock_redis, http_client):
     # Given
