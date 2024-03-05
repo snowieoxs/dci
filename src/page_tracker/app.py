@@ -1,5 +1,6 @@
 # src/page_tracker/app.py
 
+import os
 from functools import cache
 
 from flask import Flask
@@ -19,4 +20,4 @@ def index():
 
 @cache
 def redis():
-    return Redis()
+    return Redis.from_url(os.getenv("REDIS_URL", "redis://localhost:6379"))
